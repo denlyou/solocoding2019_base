@@ -89,7 +89,7 @@ gen-external-apklibs
 # External native build folder generated in Android Studio 2.2 and later
 
 # Visual Code
-.vscode
+#.vscode
 
 # NDK
 obj/
