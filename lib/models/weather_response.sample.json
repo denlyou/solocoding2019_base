@@ -1,0 +1,41 @@
+{
+    "coord": {
+        "lon": 126.7,
+        "lat": 37.43
+    },
+    "weather": [{
+        "id": 701,
+        "main": "Mist",
+        "description": "mist",
+        "icon": "50d"
+    }],
+    "base": "stations",
+    "main": {
+        "temp": 286.14,
+        "pressure": 1013,
+        "humidity": 62,
+        "temp_min": 285.15,
+        "temp_max": 287.15
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.1,
+        "deg": 230,
+        "gust": 8.2
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1555222800,
+    "sys": {
+        "type": 1,
+        "id": 5504,
+        "message": 0.0037,
+        "country": "KR",
+        "sunrise": 1555189244,
+        "sunset": 1555236368
+    },
+    "id": 1843564,
+    "name": "Incheon",
+    "cod": 200
+}
