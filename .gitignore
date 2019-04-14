@@ -328,5 +328,6 @@ playground.xcworkspace
 
 # Build files
 build/
+build*/*
 
 # End of https://www.gitignore.io/api/dart,swift,xcode,android,intellij,cocoapods,objective-c,androidstudio
