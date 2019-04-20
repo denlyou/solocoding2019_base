@@ -78,7 +78,7 @@ class WeatherResponseMainData {
 	double tempMin, tempMax; // 최소, 최대온도
 	WeatherResponseMainData(this.temp, this.pressure, this.humidity, this.tempMin, this.tempMax);
 	WeatherResponseMainData.fromJson(Map<String, dynamic> json) :
-		temp=json["temp"],
+		temp=double.parse("${json["temp"]}") - double.parse("273.15"),
 		pressure=json["pressure"],
 		humidity=json["humidity"],
 		tempMin=json["temp_min"],
