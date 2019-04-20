@@ -4,7 +4,9 @@ import "package:flutter/material.dart";
 import "package:location/location.dart";
 import "package:http/http.dart" as Http;
 import "package:solocoding2019_base/common.dart";
+import "package:solocoding2019_base/views/search.dart";
 import "package:solocoding2019_base/models/weather_response.dart";
+
 
 class HomePage extends StatefulWidget {
 	@override
@@ -44,6 +46,14 @@ class HomePageState extends State<HomePage> {
 			backgroundColor: Color.fromRGBO(37, 97, 161, 1.0),
 			appBar: AppBar(
 				title: Text("날씨"),
+				leading: IconButton(
+					icon: Icon(Icons.search),
+					onPressed: (){
+						// TODO 지역 검색
+						final route = MaterialPageRoute(builder: (_) => SearchPage());
+						Navigator.push(context, route);
+					},
+				),
 				actions: <Widget>[
 					// 다시 통신 버튼
 					IconButton(
@@ -62,7 +72,7 @@ class HomePageState extends State<HomePage> {
 	/// 내용을 만듭니다.
 	Widget _buildBody(){
 		// 데이터 초기화가 안됬으면...
-		if(_isInitData == false) return _buildBodyLoading();
+		if(_isInitData == false || _isNetworking) return _buildBodyLoading();
 		// 에러가 발생 했을 경우
 		if(_isError) return _buildBodyError();
 		// 아이콘 이름 구하기
