@@ -14,7 +14,8 @@ dependencies:
   location: 2.3.5 # https://pub.dartlang.org/packages/location
   # http 통신 라이브러리 추가
   http: 0.12.0+2 # https://pub.dartlang.org/packages/http
-
+  # 로컬 저장..
+  shared_preferences: ^0.5.2 # https://pub.dartlang.org/packages/shared_preferences
 
 dev_dependencies:
   flutter_test:
@@ -23,4 +24,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/data/city.korea.list.json
     - assets/images/

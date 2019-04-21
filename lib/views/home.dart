@@ -20,7 +20,7 @@ class HomePageState extends State<HomePage> {
 	String _errorMessage = ""; // 에러시 메세지
 
 	LocationData _nowLocationData; // 현재 위치를 가져 올 변수
-	WeatherResponse _nowWeather;
+	WeatherResponse _nowWeather; // 날시 정보 객체
 
 	@override
 	void initState() {
@@ -146,7 +146,7 @@ class HomePageState extends State<HomePage> {
 		return currentLocation;
 	}
 
-	/// 현재 위치에서 날시 정보 가져오기 (API)
+	/// 현재 위치에서 날씨 정보 가져오기 (API)
 	void _netGetNowWeather() async { 
 		try{
 			final lat = _nowLocationData.latitude;

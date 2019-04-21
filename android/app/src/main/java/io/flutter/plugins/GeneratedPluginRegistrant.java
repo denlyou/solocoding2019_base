@@ -2,6 +2,7 @@ package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
 import com.lyokone.location.LocationPlugin;
+import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -12,6 +13,7 @@ public final class GeneratedPluginRegistrant {
       return;
     }
     LocationPlugin.registerWith(registry.registrarFor("com.lyokone.location.LocationPlugin"));
+    SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
