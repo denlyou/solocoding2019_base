@@ -20,8 +20,10 @@ class CityPageState extends State<CityPage> {
 	bool _isError = false; // 오류 발생 여부
 	String _errorMessage = ""; // 에러시 메세지
 
-	bool _isFav = false; // 즐겨찾기 여부
+	bool _isFav = false; // 즐겨찾기 필터링 여부
 	WeatherResponse _nowWeather; // 날시 정보 객체
+
+	
 
 	@override
 	void initState() {
@@ -33,6 +35,16 @@ class CityPageState extends State<CityPage> {
 				_isFav = favArray.contains(widget.cityId);
 			});
 			_netGetNowWeather();
+
+			// 히스토리 저장
+			List<String> recentArray = prefs.getStringList("recent");
+			if(recentArray==null) recentArray=[];
+			// 최근 조회 기록
+			if( recentArray.contains(widget.cityId) ) recentArray.removeAt( recentArray.indexOf(widget.cityId) ); // 지우고 마지막에 추가
+			recentArray.add(widget.cityId);
+			// 최대 갯수 제한
+			while( recentArray.length > SharedValues.MAX_HISTORY ) recentArray.removeAt(0);
+			prefs.setStringList('recent', recentArray);
 		});	
 		super.initState();
 	}
