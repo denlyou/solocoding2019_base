@@ -9,7 +9,7 @@ class IntroPage extends StatelessWidget {
 
 		// 1초후 페이지 전환
 		new Future.delayed(
-			new Duration(seconds: 1),
+			new Duration(seconds: 3),
 			() => _navigateHomePage(context),
 		);
 

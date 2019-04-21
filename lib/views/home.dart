@@ -4,9 +4,9 @@ import "package:flutter/material.dart";
 import "package:location/location.dart";
 import "package:http/http.dart" as Http;
 import "package:solocoding2019_base/common.dart";
+import "package:solocoding2019_base/views/home_drawer.dart";
 import "package:solocoding2019_base/views/search.dart";
 import "package:solocoding2019_base/models/weather_response.dart";
-
 
 class HomePage extends StatefulWidget {
 	@override
@@ -46,26 +46,27 @@ class HomePageState extends State<HomePage> {
 			backgroundColor: Color.fromRGBO(37, 97, 161, 1.0),
 			appBar: AppBar(
 				title: Text("날씨"),
-				leading: IconButton(
-					icon: Icon(Icons.search),
-					onPressed: (){
-						// TODO 지역 검색
-						final route = MaterialPageRoute(builder: (_) => SearchPage());
-						Navigator.push(context, route);
-					},
-				),
-				actions: <Widget>[
-					// 다시 통신 버튼
+				actions: <Widget>[	
 					IconButton(
-						icon: Icon(Icons.replay),
-						onPressed: () {
-							setState(() { _isError = false; });
-							_netGetNowWeather();
+						icon: Icon(Icons.search),
+						onPressed: (){
+							// TODO 지역 검색
+							final route = MaterialPageRoute(builder: (_) => SearchPage());
+							Navigator.push(context, route);
 						},
-					)
+					),
 				],
 			),
-			body: _buildBody()
+			// 새로 고침 버튼
+			floatingActionButton: FloatingActionButton(
+				child: Icon(Icons.replay),
+				onPressed: () {
+					setState(() { _isError = false; });
+					_netGetNowWeather();
+				},
+			),
+			body: _buildBody(),
+			drawer: HomeDrawer(),
 		);
 	}
 
@@ -83,15 +84,21 @@ class HomePageState extends State<HomePage> {
 				mainAxisAlignment: MainAxisAlignment.center,
 				crossAxisAlignment: CrossAxisAlignment.center,
 				children: <Widget>[
-					Text(
-						"${_nowWeather.name} - ${_nowWeather.sys.country}",
-						style: TextStyle(color: Colors.white70)
-					),
+					
 					Image.asset(iconName),
 					Text(
 						"${ _nowWeather.main.temp.toStringAsFixed(2) }°C",
 						style: TextStyle(color: Colors.white, fontSize: 80.0)
-					), 
+					),
+					Text(
+						"${_nowWeather.name} - ${_nowWeather.sys.country}",
+						style: TextStyle(color: Colors.white70)
+					),
+					// 하단 여백 박스
+					SizedBox(
+						width: MediaQuery.of(context).size.width,
+						height: 40.0,
+					),
 				],
 			)
 		);
